@@ -2,69 +2,115 @@
 <html>
   <head>
     <title>D3 - Data Driven Documents</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
     <style type="text/css">
-      body {
-        padding-top: 50px;
-        padding-left: 100px;
-      }
-      .bar {
-        display: inline-block;
-        width: 20px;
-        height: 75px; /* Gets overriden by D3-assigned height below */
-        margin-right: 2px;
-        fill: teal;
-      }
       #chartArea {
-        width: 400px;
-        height: 300px;
         background-color: #CCC;
+      }
+      .bubble {
+        display: inline-block;
+        fill: purple;
+        fill-opacity: 0.5;
+        stroke: black;
+        stroke-weight: 1px;
+      }
+      .bubble:hover {
+        fill: red;
+      }
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1px;
+        shape-rendering: crispEdges;
       }
     </style>
   </head>
   <body>
     <div id="chartArea"></div>
+    <button onclick="update()">Update</button>
+    <script src="data.js"></script>
     <script type="text/javascript">
-      var dataset = _.map(_.range(75), function (i) {
-        return Math.random() * 500;
-      });
-      var w = 400, h = 300;
+
+      function getData(jdata) {
+        //index = jdata["headers"].indexOf(indexer)
+        data = []
+        $.each(jdata, function(key, val) {
+          data.push({
+            k: key,
+            v: val,
+            x: Math.round(Math.random()*100),
+            y: Math.round(Math.random()*100),
+            r: Math.round(5+Math.random()*10)
+          });
+        });
+        return data
+      }
+
+      //json is located in data.js
+      var dataset = getData(json, "Total: All Businesses");
+
+      var margin = {top: 20, right: 20, bottom: 60, left: 60};
+      var w = 1000-margin.left-margin.right, h = 600-margin.top-margin.bottom;
 
       var svg = d3.select('#chartArea').append('svg')
-      .attr('width', w)
-      .attr('height', h);
+      .attr('width', w+margin.left+margin.right)
+      .attr('height', h+margin.top+margin.bottom);
 
-        var xScale = d3.scale.ordinal()
-      .domain(dataset)
-        .rangeBands([0, w], 0.1, 0.3);
+      var diameter = 960,
+      format = d3.format(",d"),
+      color = d3.scale.category20c();
 
-        var yScale = d3.scale.linear()
-      .domain([0, d3.max(dataset) * 1.1])
-        .range([0, h]);
+  var bubble = d3.layout.pack()
+  .sort(null)
+.size([diameter, diameter])
+  .padding(1.5);
 
-        var colorScale = d3.scale.linear()
-      .domain([0, dataset.length])
-        .range(['yellow', 'green']);
+  var svg = d3.select("body").append("svg")
+  .attr("width", diameter)
+  .attr("height", diameter)
+  .attr("class", "bubble");
 
-        svg.selectAll('rect')
-        .data(dataset)
-      .enter()
-        .append('rect')
-        .attr('class', 'bar')
-        .attr('x', function (d, i) {
-          return xScale(d);
-        })
-      .attr('y', function (d) {
-        return h - yScale(d);
-      })
-      .attr('width', xScale.rangeBand())
-      .attr('height', function (d) {
-        return yScale(d);
-      })
-      .attr('fill', function (d, i) {
-        return colorScale(i);
-      });
+  d3.json("data.json", function(error, root) {
+    if (error) throw error;
+
+    var node = svg.selectAll(".node")
+      .data(bubble.nodes(classes(root))
+          .filter(function(d) { return !d.children; }))
+      .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+    node.append("title")
+      .text(function(d) { return d.className + ": " + format(d.value); });
+
+    node.append("circle")
+      .attr("r", function(d) { return d.r; })
+      .style("fill", function(d) { return color(d.packageName); });
+
+    node.append("text")
+      .attr("dy", ".3em")
+      .style("text-anchor", "middle")
+      .text(function(d) { return d.className.substring(0, d.r / 3); });
+  });
+
+// Returns a flattened hierarchy containing all leaf nodes under the root.
+function classes(root) {
+  var classes = [];
+
+  function recurse(name, node) {
+    if (node.children) node.children.forEach(function(child) { recurse(node.name, child); });
+    else classes.push({packageName: name, className: node.name, value: node.size});
+  }
+
+  recurse(null, root);
+  return {children: classes};
+}
+
+d3.select(self.frameElement).style("height", diameter + "px");
+
+
     </script>
   </body>
 </html>
