@@ -1,0 +1,321 @@
+{
+  "name": "that name",
+  "Total - All Businesses": [
+    {
+      "name": "Accommodation Fees Income",
+      "size": 0.7875
+    },
+    {
+      "name": "Conferences and Functions Hire Income",
+      "size": 0.0479
+    },
+    {
+      "name": "Catering Income",
+      "size": 0.1043
+    },
+    {
+      "name": "All Other Income",
+      "size": 0.0603
+    },
+    {
+      "name": "less staff wages and allowances",
+      "size": 0.3735
+    },
+    {
+      "name": "equals GROSS PROFIT",
+      "size": 0.6265
+    },
+    {
+      "name": "less Non-Salary Expenses, as % Total Income",
+      "size": null
+    },
+    {
+      "name": "Marketing and Advertising",
+      "size": 0.0045
+    },
+    {
+      "name": "Accounting & Legal Fees",
+      "size": 0.0037
+    },
+    {
+      "name": "All Insurance",
+      "size": 0.0113
+    },
+    {
+      "name": "Residential Life Programming Cost",
+      "size": 0.0187
+    },
+    {
+      "name": "Catering COGS and consumables",
+      "size": 0.0854
+    },
+    {
+      "name": "IT, Internet, Telephone & Fax",
+      "size": 0.017
+    },
+    {
+      "name": "Rent of Premises",
+      "size": 0.0222
+    },
+    {
+      "name": "Repairs & Maintenance",
+      "size": 0.0698
+    },
+    {
+      "name": "Capital and Refurbishment Spend",
+      "size": 0.0481
+    },
+    {
+      "name": "Electricity",
+      "size": 0.0338
+    },
+    {
+      "name": "Gas",
+      "size": 0.0082
+    },
+    {
+      "name": "Water",
+      "size": 0.013
+    },
+    {
+      "name": "Cleaning/Housekeeping",
+      "size": 0.0169
+    },
+    {
+      "name": "Laundry",
+      "size": 0.004
+    },
+    {
+      "name": "Security Spend",
+      "size": 0.0031
+    },
+    {
+      "name": "Depreciation, Lease, Equipment Amortisation and Hire-purchase",
+      "size": 0.077
+    },
+    {
+      "name": "Debt repayments",
+      "size": 0.0324
+    },
+    {
+      "name": "Unallocated Non-Salary Expenses",
+      "size": 0.0844
+    },
+    {
+      "name": "Total Non-Salary Expenses",
+      "size": 0.5534
+    }
+  ],
+  "Occupancy Rate - Leaders": [
+    {
+      "name": "Accommodation Fees Income",
+      "size": 0.9558
+    },
+    {
+      "name": "Conferences and Functions Hire Income",
+      "size": 0.008
+    },
+    {
+      "name": "Catering Income",
+      "size": 0.003
+    },
+    {
+      "name": "All Other Income",
+      "size": 0.0332
+    },
+    {
+      "name": "less staff wages and allowances",
+      "size": 0.2399
+    },
+    {
+      "name": "equals GROSS PROFIT",
+      "size": 0.7601
+    },
+    {
+      "name": "less Non-Salary Expenses, as % Total Income",
+      "size": null
+    },
+    {
+      "name": "Marketing and Advertising",
+      "size": 0.0042
+    },
+    {
+      "name": "Accounting & Legal Fees",
+      "size": 0.003
+    },
+    {
+      "name": "All Insurance",
+      "size": 0.0155
+    },
+    {
+      "name": "Residential Life Programming Cost",
+      "size": 0.0119
+    },
+    {
+      "name": "Catering COGS and consumables",
+      "size": 0.0377
+    },
+    {
+      "name": "IT, Internet, Telephone & Fax",
+      "size": 0.0176
+    },
+    {
+      "name": "Rent of Premises",
+      "size": 0.0038
+    },
+    {
+      "name": "Repairs & Maintenance",
+      "size": 0.0499
+    },
+    {
+      "name": "Capital and Refurbishment Spend",
+      "size": 0.0081
+    },
+    {
+      "name": "Electricity",
+      "size": 0.0233
+    },
+    {
+      "name": "Gas",
+      "size": 0.0112
+    },
+    {
+      "name": "Water",
+      "size": 0.0172
+    },
+    {
+      "name": "Cleaning/Housekeeping",
+      "size": 0.0045
+    },
+    {
+      "name": "Laundry",
+      "size": 0.0016
+    },
+    {
+      "name": "Security Spend",
+      "size": 0.0008
+    },
+    {
+      "name": "Depreciation, Lease, Equipment Amortisation and Hire-purchase",
+      "size": 0.1481
+    },
+    {
+      "name": "Debt repayments",
+      "size": 0.0294
+    },
+    {
+      "name": "Unallocated Non-Salary Expenses",
+      "size": 0.1017
+    },
+    {
+      "name": "Total Non-Salary Expenses",
+      "size": 0.4876
+    }
+  ],
+  "Occupancy Rate - Laggers": [
+    {
+      "name": "Accommodation Fees Income",
+      "size": 0.7697
+    },
+    {
+      "name": "Conferences and Functions Hire Income",
+      "size": 0.0957
+    },
+    {
+      "name": "Catering Income",
+      "size": 0.0785
+    },
+    {
+      "name": "All Other Income",
+      "size": 0.0561
+    },
+    {
+      "name": "less staff wages and allowances",
+      "size": 0.4699
+    },
+    {
+      "name": "equals GROSS PROFIT",
+      "size": 0.5301
+    },
+    {
+      "name": "less Non-Salary Expenses, as % Total Income",
+      "size": null
+    },
+    {
+      "name": "Marketing and Advertising",
+      "size": 0.0018
+    },
+    {
+      "name": "Accounting & Legal Fees",
+      "size": 0.0017
+    },
+    {
+      "name": "All Insurance",
+      "size": 0.0069
+    },
+    {
+      "name": "Residential Life Programming Cost",
+      "size": 0.0117
+    },
+    {
+      "name": "Catering COGS and consumables",
+      "size": 0.1629
+    },
+    {
+      "name": "IT, Internet, Telephone & Fax",
+      "size": 0.0043
+    },
+    {
+      "name": "Rent of Premises",
+      "size": 0.0
+    },
+    {
+      "name": "Repairs & Maintenance",
+      "size": 0.0745
+    },
+    {
+      "name": "Capital and Refurbishment Spend",
+      "size": 0.0088
+    },
+    {
+      "name": "Electricity",
+      "size": 0.0325
+    },
+    {
+      "name": "Gas",
+      "size": 0.0063
+    },
+    {
+      "name": "Water",
+      "size": 0.0057
+    },
+    {
+      "name": "Cleaning/Housekeeping",
+      "size": 0.0059
+    },
+    {
+      "name": "Laundry",
+      "size": 0.005
+    },
+    {
+      "name": "Security Spend",
+      "size": 0.0012
+    },
+    {
+      "name": "Depreciation, Lease, Equipment Amortisation and Hire-purchase",
+      "size": 0.0113
+    },
+    {
+      "name": "Debt repayments",
+      "size": 0.0328
+    },
+    {
+      "name": "Unallocated Non-Salary Expenses",
+      "size": 0.08
+    },
+    {
+      "name": "Total Non-Salary Expenses",
+      "size": 0.4533
+    }
+  ]
+}
