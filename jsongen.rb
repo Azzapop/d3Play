@@ -4,12 +4,20 @@ require 'json'
 
 sheet = Roo::Spreadsheet.open("Report_5558.xlsx").sheet(0)
 
-hash = {}
-hash["headers"] = [sheet.c2, sheet.d2, sheet.e2]
+c2 = sheet.c2
+d2 = sheet.d2
+e2 = sheet.e2
 
-(3..146).each do |i|
-  hash[sheet.cell('A', i)] = [sheet.cell('C', i), sheet.cell('D', i), sheet.cell('E', i)]
+hash = {}
+hash["name"] = "that name"
+hash[c2] = []
+hash[d2] = []
+hash[e2] = []
+(4..29).each do |i|
+  hash[c2] << {"name" => sheet.cell('A', i), "size" => sheet.cell('C', i)}
+  hash[d2] << {"name" => sheet.cell('A', i), "size" => sheet.cell('D', i)}
+  hash[e2] << {"name" => sheet.cell('A', i), "size" => sheet.cell('E', i)}
 end
 
 file = File.open("data.json", 'w')
-file.write(hash.to_json)
+file.write(JSON.pretty_generate(hash))
