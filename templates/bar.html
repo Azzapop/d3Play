@@ -28,6 +28,63 @@
   </head>
   <body>
     <script type="text/javascript">
+      function update(value) {
+        d3.csv("ratings.csv", function(error, data) {
+          if (error) throw error;
+
+          /*data.map(function(d) {
+            for (var k in d) {
+              if (d.hasOwnProperty(k)) {
+                if (k != value && k != "Value") delete d[k];
+              }
+            }
+          });*/
+
+          var companies = d3.keys(data[0]).filter(function(key) { return key !== "Value"; });
+
+          data.forEach(function(d) {
+            d.company = companies.map(function(name) {
+              if (name === value || value === 'all') {
+                return {name: name, value: +d[name]};
+              } else {
+                return {name: name, value: 0};
+              }
+            });
+          });
+
+          x0.domain(data.map(function(d) { return d.Value; }));
+          x1.domain(companies).rangeRoundBands([0, x0.rangeBand()]);
+          y.domain([0, d3.max(data, function(d) {
+            return d3.max(d.company, function(d) {
+              return d.value;
+            });
+          })]);
+
+          var state = svg.selectAll(".state").data(data);
+
+          rects = state.selectAll("rect");
+          rects.data(function(d) { return d.company; });
+          console.log(rects);
+
+
+          rects.map(function(rect) {
+            if (rect[0].__data__.name != value) {
+              //rect.remove();
+            }
+          });
+
+          state.attr("transform", function(d) { return "translate(" + x0(d.Value) + ",0)"; });
+
+          rects.transition().duration(500)
+            .attr("width", x1.rangeBand())
+            .attr("x", function(d) { return x1(d.name); })
+            .attr("y", function(d) { return y(d.value); })
+            .attr("height", function(d) { return height - y(d.value); })
+            .style("fill", function(d) { return color(d.name); });
+        });
+
+      }
+
 
       var margin = {top: 20, right: 20, bottom: 30, left: 40},
           width = 960 - margin.left - margin.right,
@@ -85,7 +142,7 @@
           .attr("y", 6)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("Population");
+          .text("Scale");
 
         var state = svg.selectAll(".state")
             .data(data)
@@ -121,7 +178,16 @@
           .style("text-anchor", "end")
           .text(function(d) { return d; });
 
+        //create buttons
+        companies.map(function(d) {
+          var $input = $('<button onclick="update(\''+d+'\')">'+d+'</button>');
+          $input.appendTo($("#gohere"));
+        });
+        var $input = $('<button onclick="update(\'all\')">Show All</button>');
+        $input.appendTo($("#gohere"));
       });
     </script>
+    <br>
+    <div id="gohere" />
   </body>
 </html>
