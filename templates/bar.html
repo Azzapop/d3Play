@@ -60,7 +60,6 @@
             });
           })]);
 
-          console.log(svg.select(".yAxis"));
           svg.select(".yAxis").transition().duration(500).call(yAxis);
 
           var state = svg.selectAll(".state").data(data);
