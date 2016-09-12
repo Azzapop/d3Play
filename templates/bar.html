@@ -9,8 +9,8 @@
         font: 10px sans-serif;
       }
 
-      .axis path,
-      .axis line {
+      .yAxis path,
+      .yAxis line {
         fill: none;
         stroke: #000;
         shape-rendering: crispEdges;
@@ -20,7 +20,7 @@
         fill: steelblue;
       }
 
-      .x.axis path {
+      .xAxis path {
         display: none;
       }
 
@@ -60,11 +60,13 @@
             });
           })]);
 
+          console.log(svg.select(".yAxis"));
+          svg.select(".yAxis").transition().duration(500).call(yAxis);
+
           var state = svg.selectAll(".state").data(data);
 
           rects = state.selectAll("rect");
           rects.data(function(d) { return d.company; });
-          console.log(rects);
 
 
           rects.map(function(rect) {
@@ -130,12 +132,12 @@
         y.domain([0, d3.max(data, function(d) { return d3.max(d.company, function(d) { return d.value; }); })]);
 
         svg.append("g")
-          .attr("class", "x axis")
+          .attr("class", "xAxis")
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis);
 
         svg.append("g")
-          .attr("class", "y axis")
+          .attr("class", "yAxis")
           .call(yAxis)
           .append("text")
           .attr("transform", "rotate(-90)")
